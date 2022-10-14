@@ -48,6 +48,11 @@ class FilteredSearch:
         self.tree.heading("#3", text="Last name")
         self.tree.column("#4", anchor=tk.CENTER, width=100)
         self.tree.heading("#4", text="Score")
+        self.scrollbar = tk.Scrollbar(
+            self.tree, orient=tk.VERTICAL, command=self.tree.yview
+        )
+        self.scrollbar.place(x=535, y=27, height=200)
+        self.tree.configure(yscrollcommand=self.scrollbar.set)
 
         self.labelEnterDateRange.place(x=635, y=50, anchor="center")
         self.buttonBack.place(x=1000, y=200)

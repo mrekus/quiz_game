@@ -99,7 +99,7 @@ def top_10_scores():
         .join(Player)
         .group_by(Player.id)
         .order_by(func.sum(QuestionHistory.score).desc())
-        .all()
+        .limit(10)
     )
     result = []
     for i in data:

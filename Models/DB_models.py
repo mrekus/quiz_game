@@ -2,7 +2,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, create_engine
 from sqlalchemy.orm import relationship
 
-engine = create_engine("sqlite:///C:\\Users\\Mariux\\Desktop\\Quiz_game\\sql_project2.db")
+engine = create_engine("sqlite:///quiz_game_db.db")
 Base = declarative_base()
 
 

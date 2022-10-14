@@ -46,7 +46,7 @@ class Registration:
         last_name = self.entryFieldLastName.get().capitalize()
         date = datetime.datetime.strptime(self.entryFieldDate.get(), "%Y-%m-%d %H:%M:%S")
         if name.strip() == "" or last_name.strip() == "":
-            messagebox.showerror(title="Error", message="Incorrect data entered")
+            messagebox.showerror(title="Error", message="Please enter name and last name!")
         else:
             Control.register_player(name, last_name, date)
             self.start_game()

@@ -26,7 +26,6 @@ class MainWindow:
         self.submenu = tk.Menu(self.menu, tearoff=False)
 
         self.menu.add_cascade(label="Menu", menu=self.submenu)
-        self.submenu.add_separator()
         self.submenu.add_command(label="Exit", command=master.destroy)
 
         self.buttonRegister.place(x=435, y=300, anchor="center")
