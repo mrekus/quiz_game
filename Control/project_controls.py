@@ -1,13 +1,7 @@
-from SQL_project2_models import (
-    Questions,
-    Answers,
-    QuestionHistory,
-    AnswerHistory,
-    Player,
-)
+from Models import Questions, QuestionHistory, Player, AnswerHistory, Answers
 from sqlalchemy.sql import func
 from sqlalchemy.orm import sessionmaker
-from SQL_project2_models import engine
+from Models.DB_models import engine
 import random
 
 Session = sessionmaker(bind=engine)
@@ -132,3 +126,10 @@ def get_date_range(start, end):
         inter = [i.date, i.name, i.last_name, i.score]
         result.append(inter)
     return result
+
+
+def get_questions_answers():
+    answers, questions = shuffle_questions_answers()
+    answer = iter(answers)
+    question = iter(questions)
+    return answer, question

@@ -1,0 +1,16 @@
+from Control.project_controls import (
+    get_questions_list,
+    get_answers_list,
+    shuffle_questions_answers,
+    register_player,
+    get_question_id,
+    get_last_player_id,
+    write_answer_history,
+    write_questions_history,
+    get_correct_answer,
+    get_final_score,
+    last_player_score,
+    top_10_scores,
+    get_date_range,
+    get_questions_answers,
+)

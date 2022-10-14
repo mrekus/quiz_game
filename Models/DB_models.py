@@ -1,6 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, \
-    create_engine
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, create_engine
 from sqlalchemy.orm import relationship
 
 engine = create_engine("sqlite:///sql_project2.db")
@@ -12,8 +11,7 @@ class Questions(Base):
     id = Column(Integer, primary_key=True)
     question = Column("question", String)
     choices = Column("choices", String)
-    answers = relationship("Answers", back_populates="questions",
-                           uselist=False)
+    answers = relationship("Answers", back_populates="questions", uselist=False)
 
     def __init__(self, question, choices):
         self.question = question
@@ -28,8 +26,7 @@ class Answers(Base):
     id = Column(Integer, primary_key=True)
     questions_id = Column("questions_id", Integer, ForeignKey("questions.id"))
     correct_answer = Column("correct_answer", String)
-    questions = relationship("Questions", back_populates="answers",
-                             uselist=False)
+    questions = relationship("Questions", back_populates="answers", uselist=False)
 
     def __init__(self, questions_id, correct_answer):
         self.questions_id = questions_id
