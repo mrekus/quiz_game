@@ -62,7 +62,6 @@ class Registration:
         self.entryFieldName.destroy()
         self.entryFieldLastName.destroy()
         self.entryFieldDate.destroy()
-
         self.buttonBack.destroy()
         self.buttonGame.destroy()
 

@@ -13,6 +13,7 @@ class Questions(Base):
     choices = Column("choices", String)
     answers = relationship("Answers", back_populates="questions", uselist=False)
 
+    # noinspection PyMissingConstructor
     def __init__(self, question, choices):
         self.question = question
         self.choices = choices
@@ -28,6 +29,7 @@ class Answers(Base):
     correct_answer = Column("correct_answer", String)
     questions = relationship("Questions", back_populates="answers", uselist=False)
 
+    # noinspection PyMissingConstructor
     def __init__(self, questions_id, correct_answer):
         self.questions_id = questions_id
         self.correct_answer = correct_answer
@@ -45,6 +47,7 @@ class QuestionHistory(Base):
     player = relationship("Player")
     questions = relationship("Questions")
 
+    # noinspection PyMissingConstructor
     def __init__(self, player_id, questions_id, score):
         self.player_id = player_id
         self.questions_id = questions_id
@@ -63,6 +66,7 @@ class AnswerHistory(Base):
     player = relationship("Player")
     questions = relationship("Questions")
 
+    # noinspection PyMissingConstructor
     def __init__(self, player_id, questions_id, answer):
         self.player_id = player_id
         self.questions_id = questions_id
@@ -79,6 +83,7 @@ class Player(Base):
     last_name = Column("last_name", String)
     date = Column("date", DateTime)
 
+    # noinspection PyMissingConstructor
     def __init__(self, date, name, last_name):
         self.date = date
         self.name = name

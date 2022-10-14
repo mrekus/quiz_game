@@ -1,1 +1,1 @@
-from Widgets.widgets import MyEntry, MyLabel, MyButton, MyCheckbutton
+from Widgets.widgets import MyEntry, MyLabel, MyButton, MyCheckbutton, MyCombobox
