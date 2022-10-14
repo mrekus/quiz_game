@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import Models
 import Widgets
 import Game
+import Top10
 
 Session = sessionmaker(bind=Models.engine)
 session = Session()
@@ -16,7 +17,7 @@ class MainWindow:
         self.style.theme_use("clam")
 
         self.buttonGame = Widgets.MyButton(text="Register", command=self.register_frame)
-        self.buttonTop10 = Widgets.MyButton(text="Top Scores", command="")
+        self.buttonTop10 = Widgets.MyButton(text="Top Scores", command=self.top_10_frame)
         self.buttonScoreHistory = Widgets.MyButton(text="Score history", command="")
 
         self.menu = tk.Menu(master)
@@ -36,6 +37,12 @@ class MainWindow:
         self.buttonTop10.destroy()
         self.buttonScoreHistory.destroy()
         Game.Registration(self.master)
+
+    def top_10_frame(self):
+        self.buttonGame.destroy()
+        self.buttonTop10.destroy()
+        self.buttonScoreHistory.destroy()
+        Top10.TopScores(self.master)
 
 
 def main():

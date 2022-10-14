@@ -1,8 +1,8 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey, create_engine
 from sqlalchemy.orm import relationship
 
-engine = create_engine("sqlite:///sql_project2.db")
+engine = create_engine("sqlite:///C:\\Users\\Mariux\\Desktop\\Quiz_game\\sql_project2.db")
 Base = declarative_base()
 
 
@@ -77,7 +77,7 @@ class Player(Base):
     id = Column(Integer, primary_key=True)
     name = Column("name", String)
     last_name = Column("last_name", String)
-    date = Column("date", String)
+    date = Column("date", DateTime)
 
     def __init__(self, date, name, last_name):
         self.date = date

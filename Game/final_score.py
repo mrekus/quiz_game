@@ -10,7 +10,7 @@ class FinalScore:
         self.master = master
         self.player_id = player_id
 
-        self.tree = ttk.Treeview(column=("c1", "c2", "c3"), show="headings")
+        self.tree = ttk.Treeview(columns=("c1", "c2", "c3"), show="headings")
         self.tree.column("#1", anchor=tk.CENTER, width=500)
         self.tree.heading("#1", text="Question")
         self.tree.column("#2", anchor=tk.CENTER, width=250)

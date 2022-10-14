@@ -44,7 +44,7 @@ class Registration:
     def register_player(self):
         name = self.entryFieldName.get().capitalize()
         last_name = self.entryFieldLastName.get().capitalize()
-        date = self.entryFieldDate.get()
+        date = datetime.datetime.strptime(self.entryFieldDate.get(), "%Y-%m-%d %H:%M:%S")
         if name.strip() == "" or last_name.strip() == "":
             messagebox.showerror(title="Error", message="Incorrect data entered")
         else:
