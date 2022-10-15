@@ -12,6 +12,9 @@ session = Session()
 
 
 class MainWindow:
+    """
+    Sukuria visus elementus pradiniam programos langui, bei metodus jiems valdyti.
+    """
     def __init__(self, master):
         self.master = master
         self.style = ttk.Style()
@@ -33,18 +36,36 @@ class MainWindow:
         self.buttonScoreHistory.place(x=835, y=300, anchor="center")
 
     def register_frame(self):
+        """
+        Sunaikina klasės sukurtus elementus ir iškviečia žaidėjo
+        registracijos klasę.
+        Returns: None
+
+        """
         self.buttonRegister.destroy()
         self.buttonTop10.destroy()
         self.buttonScoreHistory.destroy()
         Game.Registration(self.master)
 
     def top_10_frame(self):
+        """
+        Sunaikina klasės sukurtus elementus ir iškviečia top 10
+        rezultatų klasę.
+        Returns: None
+
+        """
         self.buttonRegister.destroy()
         self.buttonTop10.destroy()
         self.buttonScoreHistory.destroy()
         Top10.TopScores(self.master)
 
     def score_history_frame(self):
+        """
+        Sunaikina klasės sukurtus elementus ir iškviečia žaidėjų
+        istorijos filtravimo klasę.
+        Returns: None
+
+        """
         self.buttonRegister.destroy()
         self.buttonTop10.destroy()
         self.buttonScoreHistory.destroy()

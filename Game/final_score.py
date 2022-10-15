@@ -6,6 +6,9 @@ import Main
 
 
 class FinalScore:
+    """
+    Sukuria ir valdo galutinio rezultato lango po žaidimo elementus.
+    """
     def __init__(self, master, player_id):
         self.master = master
         self.player_id = player_id
@@ -33,6 +36,12 @@ class FinalScore:
         self.tree.place(x=625, y=250, anchor="center")
 
     def back_from_final_score(self):
+        """
+        Sunaikina visus lango sukurtus elementus, iškviečia pradinį
+        programos langą.
+        Returns: None
+
+        """
         self.labelFinalScore.destroy()
         self.tree.destroy()
         self.buttonBack.destroy()

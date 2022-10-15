@@ -8,6 +8,10 @@ import Game
 
 
 class Registration:
+    """
+    Sukuria visus žaidėjo registracijai naudojamus elementus,
+    bei metodus jiems valdyti.
+    """
     def __init__(self, master):
         self.master = master
 
@@ -42,6 +46,12 @@ class Registration:
         self.entryFieldDate.config(state="disabled")
 
     def register_player(self):
+        """
+        Tikrina ar įrašytas žaidėjo vardas bei pavardė, jei ne meta
+        error langą, jei taip, įrašo žaidėją į DB ir pradeda žaidimą.
+        Returns: None
+
+        """
         name = self.entryFieldName.get().capitalize()
         last_name = self.entryFieldLastName.get().capitalize()
         date = datetime.datetime.strptime(self.entryFieldDate.get(), "%Y-%m-%d %H:%M:%S")
@@ -52,10 +62,21 @@ class Registration:
             self.start_game()
 
     def start_game(self):
-        self.forget_player_entry_fields()
+        """
+        Sunaikina visus klasės sukurtus elementus ir
+        pradeda žaidimą
+        Returns: None
+
+        """
+        self.destroy_player_entry_fields()
         Game.PlayGame(self.master)
 
-    def forget_player_entry_fields(self):
+    def destroy_player_entry_fields(self):
+        """
+        Sunaikina visus klasės sukurtus elementus.
+        Returns: None
+
+        """
         self.labelEditName.destroy()
         self.labelEditLastName.destroy()
         self.labelEditDate.destroy()
@@ -66,5 +87,11 @@ class Registration:
         self.buttonGame.destroy()
 
     def back_from_registration(self):
-        self.forget_player_entry_fields()
+        """
+        Sunaikina klasės sukurtus elementus ir kviečia klasę,
+        kuri atstato pradinį programos langą.
+        Returns: None
+
+        """
+        self.destroy_player_entry_fields()
         Main.MainWindow(self.master)

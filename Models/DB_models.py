@@ -7,6 +7,10 @@ Base = declarative_base()
 
 
 class Questions(Base):
+    """
+    Sukuria klausimų lentelę kurioje laikomi klausimai,
+    galimi atsakymai, bei relationship į teisingus atsakymus.
+    """
     __tablename__ = "questions"
     id = Column(Integer, primary_key=True)
     question = Column("question", String)
@@ -23,6 +27,9 @@ class Questions(Base):
 
 
 class Answers(Base):
+    """
+    Sukuria atskymų lentelę kurioje laikomi teisingi atsakymai į klausimus.
+    """
     __tablename__ = "answers"
     id = Column(Integer, primary_key=True)
     questions_id = Column("questions_id", Integer, ForeignKey("questions.id"))
@@ -39,6 +46,9 @@ class Answers(Base):
 
 
 class QuestionHistory(Base):
+    """
+    Sukuria lentelę kurioje laikoma žaidėjo klausimųu istorija.
+    """
     __tablename__ = "question_history"
     id = Column(Integer, primary_key=True)
     player_id = Column("player_id", Integer, ForeignKey("player.id"))
@@ -58,6 +68,9 @@ class QuestionHistory(Base):
 
 
 class AnswerHistory(Base):
+    """
+    Sukuria lentelę kurioje laikoma žaidėjo atsakymų istorija.
+    """
     __tablename__ = "answer_history"
     id = Column(Integer, primary_key=True)
     player_id = Column("player_id", Integer, ForeignKey("player.id"))
@@ -77,6 +90,9 @@ class AnswerHistory(Base):
 
 
 class Player(Base):
+    """
+    Sukuria lentelę kurioje laikoma žaidėjo informacija.
+    """
     __tablename__ = "player"
     id = Column(Integer, primary_key=True)
     name = Column("name", String)

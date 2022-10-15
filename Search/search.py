@@ -7,6 +7,10 @@ from tkinter import ttk
 
 
 class FilteredSearch:
+    """
+    Sukuria visus rezultatų filtravimui naudojamus elementus, bei metodus
+    jiems valdyti.
+    """
     def __init__(self, master):
         self.master = master
 
@@ -75,6 +79,14 @@ class FilteredSearch:
         self.year_list_to.event_generate("<<ComboboxSelected>>")
 
     def refresh_table(self, _event):
+        """
+        Išvalo, bei atnaujina lentelę atsitikus event (combobox pasikeitimui).
+        Args:
+            _event: Aktyvuojamas event
+
+        Returns: None
+
+        """
         for i in self.tree.get_children():
             self.tree.delete(i)
         date_from = (
@@ -99,6 +111,11 @@ class FilteredSearch:
             self.tree.insert("", tk.END, values=row)
 
     def destroy_widgets(self):
+        """
+        Sunaikina visus klasės sukurtus elementus
+        Returns: None
+
+        """
         self.labelFrom.destroy()
         self.labelTo.destroy()
         self.labelEnterDateRange.destroy()
@@ -112,5 +129,11 @@ class FilteredSearch:
         self.tree.destroy()
 
     def back_from_search(self):
+        """
+        Sunaikina visus klasės sukurtus elementus ir
+        grąžina pradinį programos langą.
+        Returns:
+
+        """
         self.destroy_widgets()
         Main.MainWindow(self.master)

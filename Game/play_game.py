@@ -6,6 +6,10 @@ import random
 
 
 class PlayGame:
+    """
+    Sukuria visus žaidimui naudojamus elementus bei metodus jiem
+    valdyti.
+    """
     def __init__(self, master):
         self.master = master
 
@@ -42,6 +46,13 @@ class PlayGame:
         self.show_answers()
 
     def next_question(self):
+        """
+        Įrašo žaidėjo klausimą bei atsakymą, parodo sekantį
+        klausimą. Jei visi klausimai jau parodyti, sunaikina visus žaidimo
+        elementus ir kviečia FinalScore langą.
+        Returns: None
+
+        """
         try:
             self.write_answers()
             self.write_questions()
@@ -56,10 +67,20 @@ class PlayGame:
             Game.FinalScore(self.master, self.currentPlayerID.get())
 
     def show_question(self):
+        """
+        Parodo sekantį klausimą.
+        Returns: None
+
+        """
         question_text = next(self.question)
         self.labelQuestion.config(text=question_text)
 
     def show_answers(self):
+        """
+        Parodo klausimo atsakymus juos pirma išmaišius.
+        Returns: None
+
+        """
         answer_text = next(self.answer).split(",")
         random.shuffle(answer_text)
         self.checkAnswer1.config(text=answer_text[0].lstrip(), variable=self.checkBox1)
@@ -68,6 +89,11 @@ class PlayGame:
         self.checkAnswer4.config(text=answer_text[3].lstrip(), variable=self.checkBox4)
 
     def write_answers(self):
+        """
+        Įrašo pasirinktus atsakymus į DB.
+        Returns: None
+
+        """
         choice = self.get_my_choice()
         Control.write_answer_history(
             self.currentPlayerID.get(),
@@ -76,6 +102,11 @@ class PlayGame:
         )
 
     def get_my_choice(self):
+        """
+        Gauna visus checkbox pasirinkimus
+        Returns: Pasirinktų checkbox sąrašą.
+
+        """
         choice = ""
         if self.checkBox1.get() == 1:
             choice += self.checkAnswer1["text"] + ", "
@@ -88,6 +119,11 @@ class PlayGame:
         return choice.rstrip(", ")
 
     def write_questions(self):
+        """
+        Įrašo klausimą į DB.
+        Returns: None
+
+        """
         score = self.get_answer_score()
         Control.write_questions_history(
             self.currentPlayerID.get(),
@@ -96,6 +132,12 @@ class PlayGame:
         )
 
     def get_answer_score(self):
+        """
+        Apskaičiuoja taškus priklausomai nuo pasirinktų atsakymų
+        ir jų kiekio.
+        Returns: Taškus už klausimą.
+
+        """
         correct_answer = self.get_correct_answer_list()
         my_answer = self.get_my_answers_list()
         score = 0
@@ -134,6 +176,12 @@ class PlayGame:
         return score
 
     def get_my_answers_list(self):
+        """
+        Gauna visus žaidėjo pasirinktus atsakymus
+        į duotą klausimą.
+        Returns: Pasirinktų atsakymų sąrašą.
+
+        """
         answer_list = []
         my_answer = self.get_my_choice()
         for i in my_answer.split(","):
@@ -141,6 +189,11 @@ class PlayGame:
         return answer_list
 
     def get_correct_answer_list(self):
+        """
+        Gauna teisingus atsakymus į duotą klausimą.
+        Returns: Teisingų atsakymų sąrašas
+
+        """
         correct_answer_list = []
         correct_answer = Control.get_correct_answer(
             Control.get_question_id(self.labelQuestion["text"])
@@ -150,6 +203,11 @@ class PlayGame:
         return correct_answer_list
 
     def destroy_game_widgets(self):
+        """
+        Sunaikina visus klasės sukurtus elementus.
+        Returns: None
+
+        """
         self.buttonNextQuestion.destroy()
         self.labelQuestion.destroy()
         self.checkAnswer1.destroy()

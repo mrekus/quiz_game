@@ -6,6 +6,10 @@ import Main
 
 
 class TopScores:
+    """
+    Sukuria visus top 10 rezultatų rodymui naudojamus elementus,
+    bei metodus jiems valdyti.
+    """
     def __init__(self, master):
         self.master = master
 
@@ -30,6 +34,12 @@ class TopScores:
         self.labelTop10.place(x=635, y=70, anchor="center")
 
     def back_from_top(self):
+        """
+        Sunaikina visus klasės sukurtus elementus ir atstato
+        pradinį programos langą.
+        Returns:
+
+        """
         self.labelTop10.destroy()
         self.tree.destroy()
         self.buttonBack.destroy()
