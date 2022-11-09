@@ -1,5 +1,8 @@
 # quiz_game
 
+![Screenshot 2022-11-09 113447](https://user-images.githubusercontent.com/113506949/200794226-2065f8ab-9b26-4745-89cf-1a8611d8a6ea.png)
+
+
 Programoje naudojamos technologijos:
 - Tkinter
 - SQLAlchemy
